@@ -269,6 +269,9 @@ as a result, all updates are communicated with Market Data
 Incremental Refresh <X> messages; note that each <X> message may
 contain market data for more than one symbol.
 
+    Market data updates are sent only when price changes occur.
+    Lulls in the arrival of market data are not a cause for concern.
+
 To cancel a subscription, send a Market Data Request message with
 ``SubscriptionRequestType=2`` and indicate the MDReqID of the
 subscription you wish to cancel.  Note that subscriptions are also
