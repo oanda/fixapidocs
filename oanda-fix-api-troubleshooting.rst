@@ -102,6 +102,7 @@ Problems with Connecting
 
     b. verify that the ``HeartBtInt`` value proposed is acceptable
 
+
 4.  If your account is locked out due to an excessive number of failed
     logon attempts, contact customer service for an unlock.
 
@@ -176,6 +177,7 @@ contain some indication of what is wrong
 
          - each group has a specific tag that must be the first tag in
            the group
+
 
 2.  Business Message Reject <j>
 
