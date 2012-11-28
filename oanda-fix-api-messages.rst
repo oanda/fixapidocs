@@ -768,6 +768,8 @@ No information is recorded for OrdStatus=REJECTED orders.
 | 11          | ClOrdID                 | Y                    | string       | unique order identifier assigned by the client                |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 | 790         | OrdStatusReqID          | N                    | string       | if provided, is echoed back in Execution Report               |
+|             |                         | (non-standard prior  |              |                                                               |
+|             |                         | to FIX.4.4)          |              |                                                               |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 | 55          | Symbol                  | Y                    | string       | currency pair                                                 |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
@@ -834,6 +836,10 @@ Text <58> annotation "OrdType=J".
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 | 41          | OrigClOrdID             | N                    | string       | previous order identifier assigned by the client              |
 |             |                         |                      |              | for order cancel and cancel/replace request responses         |
++-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
+| 790         | OrdStatusReqID          | N                    | string       | provided if present in requesting Order Status Request <H>    |
+|             |                         | (non-standard prior  |              |                                                               |
+|             |                         | to FIX.4.4)          |              | value from request echoed back                                |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 | 17          | ExecID                  | Y                    | string       | execution ID assigned by OANDA server                         |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
