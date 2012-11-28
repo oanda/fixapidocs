@@ -410,10 +410,19 @@ requested ("``267=2 269=0 269=1``").
 |       |     |                         |                      | value        |                                                               |
 |       |     |                         |                      | string       | conditions on market data entry                               |
 |       +-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
+|       | 64  | FutSettDate             | N                    | LocalMktDate | for trades on the symbol, the specific settlement date for    |
+|       |     | (FIX.4.2, FIX.4.3),     | (non-standard)       |              | customers with prime brokerage arrangements                   |
+|       |     | SettlDate               |                      |              |                                                               |
+|       |     | (FIX.4.4+)              |                      |              | value date accurate for MDEntryDate / MDEntryTime reported    |
+|       |     |                         |                      |              |                                                               |
+|       +-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 |       | 58  | Text                    | N                    | string       | notes on market data entry                                    |
 +-------+-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 |             | standard trailer        | Y                    |              |                                                               |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
+
+SettlDate <64> is only provided to customers with prime brokerage 
+arrangements and other specifically-configured customers.
 
 Indicative prices are marked "Indicative" in the text notes in
 addition to QuoteCondition=B.
@@ -472,10 +481,19 @@ both were requested ("``267=2 269=0 269=1``").
 |       |     |                         |                      | value        |                                                               |
 |       |     |                         |                      | string       | conditions on market data entry                               |
 |       +-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
+|       | 64  | FutSettDate             | N                    | LocalMktDate | for trades on the symbol, the specific settlement date for    |
+|       |     | (FIX.4.2, FIX.4.3),     | (non-standard)       |              | customers with prime brokerage arrangements                   |
+|       |     | SettlDate               |                      |              |                                                               |
+|       |     | (FIX.4.4+)              |                      |              | value date accurate for MDEntryDate / MDEntryTime reported    |
+|       |     |                         |                      |              |                                                               |
+|       +-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 |       | 58  | Text                    | N                    | string       | notes on market data entry                                    |
 +-------+-----+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 |             | standard trailer        | Y                    |              |                                                               |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
+
+SettlDate <64> is only provided to customers with prime brokerage 
+arrangements and other specifically-configured customers.
 
 Please also consult the notes on market data snapshot messages.
 

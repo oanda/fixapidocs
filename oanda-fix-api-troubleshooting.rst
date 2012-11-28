@@ -362,6 +362,12 @@ ending with a dot.  Items are separated by a single space.
 | funds            | insufficient    |               |                                      |
 |                  | funds           |               |                                      |
 +------------------+-----------------+---------------+--------------------------------------+
+| trade fails due  | Maximum number  |               | there is a 1000 open order limit and |
+| to trade ticket  | of open orders  |               | a 1000 trade-ticket limit per        |
+| limit or open    | or trades       |               | account                              |
+| orders limit     | exceeded        |               |                                      |
+| exceeded         |                 |               |                                      |
++------------------+-----------------+---------------+--------------------------------------+
 | trading halted   | Symbol <55> =   |               |                                      |
 | on symbol        | *value* trading |               |                                      |
 |                  | halted          |               |                                      |

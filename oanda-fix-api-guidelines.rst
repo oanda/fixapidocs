@@ -25,6 +25,13 @@ protocol. You are urged to download and consult the official FIX
 specifications and the recommended best practices document
 at http://www.fixprotocol.org/.
 
+The OANDA FIX API primarily focuses on serving institutional customers
+who wish to benefit from OANDA's liquidity and carry their positions in
+their own account at a prime broker.  Customers who require OANDA
+platform specific features not found in the FIX order model should 
+consider using the REST-based OANDA Open API.
+
+
 Connection Requirements
 =======================
 
@@ -332,3 +339,44 @@ last transaction ticket.
 The diaspora record cannot be relied on to group position tickets 
 resulting from one action together.  Please consult the execution 
 reported list of ticket numbers instead.
+
+
+Trades/Orders limitation
+------------------------
+
+Although FIX API users interact with the system using the FIX order 
+model and see the FIX view of orders, the user's account is hosted on
+the OANDA system and as such is still subject to account- and user-based
+limitations.
+
+Each account is limited to 1000 OANDA *trades* maximum, as well as
+1000 OANDA *orders* maximum.  Customers who build up a net position
+with a large number of small-unit trades may find themself up against 
+the 1000-trade limit.
+
+Requests that would result in exceeding either the trade or order limit
+are rejected with Text
+"Maximum number of open orders or trades exceeded".  FIX orders (limit,
+stop, market-if-touched) that trigger but would result in exceeding the
+1000-trades limit are canceled with the same Text annotation.
+
+Currently the only way to view open *trades* and open *orders* is via
+the graphical user interface or via the Open API.
+
+Prime Brokerage Customers
+=========================
+
+Institutional customers wishing to trade on the OANDA system and hold
+positions at their own account with a prime broker will see different
+behavior.  Specifically:
+
+1.  positions are moved to their account at the prime broker and as such
+    the user would not encounter the 1000-trade limit
+
+2.  prime broker customers do not have funds on deposit and are not 
+    subject to margin checking; trades will not fail due to
+    insufficient funds
+
+3.  market data served to prime broker customers will have an additional
+    field SettlDate <64> reporting the current value date for trades on
+    the symbol

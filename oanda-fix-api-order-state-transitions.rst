@@ -166,6 +166,7 @@ There are situations where an order can be canceled by the system,
 including:
 
 * account insufficient funds when order triggers
+* account would exceed the 1000 OANDA-trade-tickets limit when order triggers
 
 +------+------------------------+------------------------+----------+-----------+----------+--------+-----------+---------+-------------------------+
 | Time | Message Received       | Message Sent           | ExecType | OrdStatus | OrderQty | CumQty | LeavesQty | LastQty | Comment                 |
