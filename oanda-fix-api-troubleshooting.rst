@@ -61,6 +61,8 @@ Problems with Connecting
            +------------------------------------+
            | client=yes                         |
            | verify=0                           |
+           | socket=l:TCP_NODELAY=1             |
+           | socket=r:TCP_NODELAY=1             |
            |                                    |
            | [OANDAFIX]                         |
            | accept=30008                       |
