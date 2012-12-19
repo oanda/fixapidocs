@@ -1,4 +1,4 @@
-.. include:: <isonum.txt>
+.. |sect|   unicode:: U+000A7 .. SECTION SIGN
 
 
 ===========================================
@@ -77,11 +77,15 @@ on partial or no fill, and REJECTED if there were problems.
 +------+------------------------+------------------------+----------+-----------+----------+--------+-----------+---------+-------------------------+
 | any attempt to change or cancel the order results in a rejection                                                                                  |
 +------+------------------------+------------------------+----------+-----------+----------+--------+-----------+---------+-------------------------+
-| 3    | Order Cancel Request   | Order Cancel Reject    |          | unchanged |          |        |           |         | ``CxlRejReason=0``      |
-|      | (Y,X)                  | (Y,X)                  |          |           |          |        |           |         |                         |
-|      |                        |                        |          |           |          |        |           |         | ClOrdID remains as (X)  |
+| 3    | Order Cancel Request   |                        |          |           |          |        |           |         |                         |
+|      | (Y,X)                  |                        |          |           |          |        |           |         |                         |
+|      |                        |                        |          |           |          |        |           |         |                         |
 |      | Order Cancel / Replace |                        |          |           |          |        |           |         |                         |
 |      | Request (Y,X)          |                        |          |           |          |        |           |         |                         |
+|      +------------------------+------------------------+----------+-----------+----------+--------+-----------+---------+-------------------------+
+|      |                        | Order Cancel Reject    |          | unchanged |          |        |           |         | ``CxlRejReason=0``      |
+|      |                        | (Y,X)                  |          |           |          |        |           |         |                         |
+|      |                        |                        |          |           |          |        |           |         | ClOrdID remains as (X)  |
 +------+------------------------+------------------------+----------+-----------+----------+--------+-----------+---------+-------------------------+
 
 Note message bundling behavior as per the recommended best practices |sect| 3.3.1.2 [RBPP1]_.
