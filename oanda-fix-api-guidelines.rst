@@ -71,6 +71,8 @@ To use the OANDA FIX API:
          ## fxTrade Practice (testing) ##
          client=yes
          verify=0
+         socket=l:TCP_NODELAY=1
+         socket=r:TCP_NODELAY=1
 
          [FXFIX]
          accept=30008
