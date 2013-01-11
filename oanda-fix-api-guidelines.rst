@@ -121,6 +121,142 @@ mechanism.
     `troubleshooting guide <./oanda-fix-api-troubleshooting.rst>`_ 
     for further information.
 
+Supported Features
+==================
+
+The OANDA FIX API provides streaming market data for requested
+symbols and order placement on a user's accounts.
+
+No account status or positions information is currently available
+through the FIX interface.
+
+Market Data
+-----------
+
+The OANDA FIX API provides access to OANDA's real-time streaming 
+prices.
+
+One-time snapshots are supported.  For users requiring real-time 
+price updates as they occur, subscriptions must be used instead of
+rapid repeated polling.
+
+Order Entry
+-----------
+
+The OANDA FIX API implements a FIX order model to the OANDA trading
+system.
+
+Supported Order Types
++++++++++++++++++++++
+
+Immediately Executed Order Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Market Orders
+
+  Market orders are orders to buy or sell a particular quantity of a 
+  currency pair at the prevailing price at the time the order was 
+  received at the OANDA servers.
+
+* Fill-or-Kill (FOK) Orders, Immediate-or-Cancel (IOC) Orders
+
+  Orders placed FOK are executed immediately if the price and quantity
+  stipulations are met at the time the order is received; if the 
+  stipulations are not met, the order is cancelled in full. Orders 
+  placed IOC are executed immediately if the price stipulation is met, 
+  up to the available quantity for execution, and the remaining 
+  quantity is cancelled.
+
+Price-Conditional Order Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Standard Limit Orders
+
+  A standard limit order requests a trade of some quantity of a 
+  currency pair, at the requested price or better. If the prevailing 
+  market price is already better than the request price at the time the
+  order is received, the order fills immediately. Otherwise, the order 
+  waits for execution until the price stipulation is met or the order 
+  expires.
+
+  Standard limit orders requesting Fill-or-Kill (FOK) or 
+  Immediate-or-Cancel (IOC) execution behave as described in the 
+  previous section.
+
+* Standard Stop Orders
+
+  A standard stop order requests a trade of some quantity of a 
+  currency pair, at the requested price or worse. If the prevailing 
+  market price is already worse than the request price at the time the
+  order is received, the order fills immediately. Otherwise, the order 
+  waits for execution until the price stipulation is met or the order
+  expires.
+
+  Standard stop orders requesting Fill-or-Kill (FOK) or 
+  Immediate-or-Cancel (IOC) execution behave as described in the 
+  previous section.
+
+* Market-if-Touched Orders
+
+  (This order type is called a “limit order” in OANDA’s other APIs and 
+  graphical interfaces.)
+
+  A market-if-touched order requests a trade of some quantity of a 
+  currency pair when the requested price is touched. If the prevailing 
+  market price is exactly the request price at the time the 
+  order is recieved, the order fills immediately. Otherwise, the order 
+  waits for execution until the market price touches/crosses the request 
+  price or the order expires.
+
+  Market-if-touched orders execute at OANDA-published prices; if a 
+  waiting market-if-touched order triggers due to the market price 
+  crossing the request price, the fill will occur at the first market
+  price after the request price is crossed.
+
+  Market-if-touched orders cannot be requested FOK or IOC.
+
+  Market-if-touched orders can only be placed on FIX.4.4 sessions.
+
+Market Depth
+++++++++++++
+
+The OANDA fxTrade trading system imposes a maximum trade size for 
+individual trades. The maximum trade size is specified in the market 
+data entry size for the largest tier for the side in market data 
+messages.
+
+The maximum trade sizes for the OANDA trading system are the following
+(although these maximums may not be available at all times due to 
+limited liquidity):
+
++----------------------------+----------------------------+
+| Pair                       | Maximum Units              |
++============================+============================+
+| XAG/USD                    |                     100000 |
++----------------------------+----------------------------+
+| XAU/USD                    |                       5000 |
++----------------------------+----------------------------+
+| All other tradeable pairs  |                   10000000 |
++----------------------------+----------------------------+
+
+(Users are welcome to place multiple trades to trade higher quantities.)
+
+Orders submitted with requested quantity larger than the quantity 
+available for execution are handled differently depending on the 
+order type:
+
++----------------+-----------------+---------------------------+
+| Order Type     | Result          | Notes                     |
++================+=================+===========================+
+| FOK orders     | order cancelled | Not filled at all         |
++----------------+-----------------+---------------------------+
+| IOC orders     | order cancelled | Partially filled up to    | 
+|                |                 | the quantity available    |
++----------------+-----------------+---------------------------+
+| all others     | order rejected  | Order rejected outright   |
++----------------+-----------------+---------------------------+
+
+
 Mapping of FIX Server Orders to OANDA Transaction-view Tickets
 ==============================================================
 
