@@ -462,4 +462,9 @@ ending with a dot.  Items are separated by a single space.
 |                  |                 |               | OANDA tickets are associated with    |
 |                  |                 |               | this FIX order                       |
 +------------------+-----------------+---------------+--------------------------------------+
-
+| TransactTime     | TransactTime    |               |                                      |
+| old at time of   | <60> is more    |               |                                      |
+| order reception  | than 1.0        |               |                                      |
+|                  | seconds old at  |               |                                      |
+|                  | reception       |               |                                      |
++------------------+-----------------+---------------+--------------------------------------+
