@@ -339,10 +339,10 @@ Types of Market Data Requests:
 |             |                         |                      |              | * 1 = snapshot plus updates (subscription)                    |
 |             |                         |                      |              | * 2 = disable previous subscription                           |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
-| 264         | MarketDepth             | Y                    | int          | depth of market to return                                     |
+| 264         | MarketDepth             | Y                    | int          | depth of market to return,                                    |
+|             |                         |                      |              | OANDA supports only one level of market depth                 |
 |             |                         |                      |              |                                                               |
-|             |                         |                      |              | * 0 = all levels                                              |
-|             |                         |                      |              | * N = return first N levels                                   |
+|             |                         |                      |              | * 1 = Top level                                               |
 +-------------+-------------------------+----------------------+--------------+---------------------------------------------------------------+
 | 265         | MDUpdateType            | Y for subscriptions, |              |                                                               |
 |             |                         | N otherwise          | int          | for subscriptions, indicates the desired update type:         |
